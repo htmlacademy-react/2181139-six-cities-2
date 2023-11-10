@@ -9,6 +9,12 @@
     "preview": "vite preview",
     "test": "vitest --passWithNoTests"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
   "dependencies": {
     "@reduxjs/toolkit": "1.9.5",
     "axios": "0.27.2",
@@ -59,4 +65,5 @@
       "last 1 safari version"
     ]
   }
+
 }
