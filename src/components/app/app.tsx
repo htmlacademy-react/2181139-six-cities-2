@@ -3,21 +3,23 @@ import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import Login from '../../pages/login';
 import Favorites from '../../pages/main/favorite';
-import Offers from '../../pages/main/offers';
+import Offer from '../../pages/main/offer.tsx';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-root';
+import { OffersTypes } from '../../types.ts';
 
 type AppScreenProps = {
   numberOfRentalOffers: number;
+  offersData: OffersTypes;
 }
 
-function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
+function App ({numberOfRentalOffers, offersData} : AppScreenProps) :JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage numberOfRentalOffers={numberOfRentalOffers}/>}
+          element={<MainPage numberOfRentalOffers={numberOfRentalOffers} offersData={offersData} />}
         />
         <Route
           path={AppRoute.Login}
@@ -27,21 +29,20 @@ function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
           path={AppRoute.Favorites}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <Favorites />
+              <Favorites offersData={offersData} />
             </PrivateRoute>
           }
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offers/>}
+          element={<Offer offer={offersData[0]}/>}
         />
         <Route
           path="*"
           element={<NotFound/>}
         />
-
       </Routes>
     </BrowserRouter>
   );
