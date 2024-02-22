@@ -6,6 +6,8 @@ export type OffersType = {
   type: string;
   bedroomsQuantity: number;
   price: number;
+  lat: number;
+  lng: number;
 };
 
 export type OffersTypes = OffersType[];
