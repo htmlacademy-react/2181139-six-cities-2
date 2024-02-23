@@ -11,7 +11,7 @@ type MainPageProps = {
 
 function MainPage({numberOfRentalOffers, offersData}: MainPageProps) : JSX.Element {
 
-  const [card, setActiveCard] = useState<number>(offersData[0].id);
+  const [, setActiveCard] = useState<number>(offersData[0].id);
   const handler = (id: number) => setActiveCard(id);
   return (
 
