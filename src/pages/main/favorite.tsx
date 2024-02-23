@@ -12,7 +12,7 @@ function Favorites({offersData} : FavoritesProps) : JSX.Element{
   const allOffers = offersData;
   return (
     <div>
-      <HeaderLogin/>
+      <HeaderLogin />
       <div className="page__favorites-container container">
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
