@@ -10,6 +10,8 @@ export const offersData: OffersTypes = [
     type: 'flat',
     bedroomsQuantity: 3,
     price: 456,
+    lat: 52.3909553943508,
+    lng: 4.85309666406198,
   },
   {
     id: 1234,
@@ -19,6 +21,8 @@ export const offersData: OffersTypes = [
     type: 'house',
     bedroomsQuantity: 5,
     price: 1000,
+    lat: 52.3609553943508,
+    lng: 4.85309666406198,
   },
   {
     id: 1456,
@@ -28,6 +32,8 @@ export const offersData: OffersTypes = [
     type: 'apartment',
     bedroomsQuantity: 7,
     price: 500,
+    lat: 52.3909553943508,
+    lng: 4.929309666406198,
   },
   {
     id: 4567,
@@ -37,6 +43,8 @@ export const offersData: OffersTypes = [
     type: 'apartment',
     bedroomsQuantity: 1,
     price: 200,
+    lat: 52.3809553943508,
+    lng: 4.939309666406198
   },
 
 ];
