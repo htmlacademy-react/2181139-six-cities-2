@@ -49,8 +49,9 @@ export const offersData: OffersTypes = [
 
 ];
 
-export const reviews: ReviewsTypes = [
+export const reviewsData: ReviewsTypes = [
   {
+    id: 134,
     avatar: 'img/avatar.svg',
     name: 'Alex',
     raiting: 3434,
@@ -58,13 +59,14 @@ export const reviews: ReviewsTypes = [
     text: 'good choice',
   },
   {
+    id: 567,
     avatar: 'img/avatar.svg',
     name: 'Leo',
     raiting: 3474,
     date: 14020,
     text: 'bad choice',
   },
-  {
+  { id: 76,
     avatar: 'img/avatar.svg',
     name: 'Ramy',
     raiting: 3554,
@@ -72,6 +74,7 @@ export const reviews: ReviewsTypes = [
     text: 'good choice',
   },
   {
+    id: 78,
     avatar: 'img/avatar.svg',
     name: 'Moty',
     raiting: 994,

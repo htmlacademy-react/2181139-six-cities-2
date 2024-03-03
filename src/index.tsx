@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import {offersData} from './mocks/offers-reviews';
+import {offersData, reviewsData} from './mocks/offers-mocks';
+import { ReviewsTypes } from './types';
 
 export const Settings = {
   numberOfRentalOffers: 3,
-  offers: offersData
+  offers: offersData,
+  reviews: reviewsData as ReviewsTypes
 } as const;
 
 const root = ReactDOM.createRoot(
@@ -17,6 +19,7 @@ root.render(
     <App
       numberOfRentalOffers={Settings.numberOfRentalOffers}
       offersData={Settings.offers}
+      reviewsData={Settings.reviews}
     />
   </React.StrictMode>
 );
