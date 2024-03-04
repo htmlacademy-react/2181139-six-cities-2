@@ -1,5 +1,5 @@
 import { OffersTypes } from '../types.ts';
-import { ReviewsTypes } from '../types.ts';
+
 
 export const offersData: OffersTypes = [
   {
@@ -49,35 +49,38 @@ export const offersData: OffersTypes = [
 
 ];
 
-export const reviews: ReviewsTypes = [
-  {
-    avatar: 'img/avatar.svg',
-    name: 'Alex',
-    raiting: 3434,
-    date: 14072020,
-    text: 'good choice',
-  },
-  {
-    avatar: 'img/avatar.svg',
-    name: 'Leo',
-    raiting: 3474,
-    date: 14020,
-    text: 'bad choice',
-  },
-  {
-    avatar: 'img/avatar.svg',
-    name: 'Ramy',
-    raiting: 3554,
-    date: 14074420,
-    text: 'good choice',
-  },
-  {
-    avatar: 'img/avatar.svg',
-    name: 'Moty',
-    raiting: 994,
-    date: 1436320,
-    text: 'good choice',
-  }
+// export const reviewsData: ReviewsTypes = [
+//   {
+//     id: 134,
+//     avatar: 'img/avatar.svg',
+//     name: 'Alex',
+//     raiting: 3434,
+//     date: 14072020,
+//     text: 'good choice',
+//   },
+//   {
+//     id: 567,
+//     avatar: 'img/avatar.svg',
+//     name: 'Leo',
+//     raiting: 3474,
+//     date: 14020,
+//     text: 'bad choice',
+//   },
+//   { id: 76,
+//     avatar: 'img/avatar.svg',
+//     name: 'Ramy',
+//     raiting: 3554,
+//     date: 14074420,
+//     text: 'good choice',
+//   },
+//   {
+//     id: 78,
+//     avatar: 'img/avatar.svg',
+//     name: 'Moty',
+//     raiting: 994,
+//     date: 1436320,
+//     text: 'good choice',
+//   }
 
 
-];
+// ];

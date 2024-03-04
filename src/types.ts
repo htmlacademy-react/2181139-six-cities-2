@@ -13,6 +13,7 @@ export type OffersType = {
 export type OffersTypes = OffersType[];
 
 export type ReviewsType = {
+  id: number;
   avatar: string;
   name: string;
   raiting: number;
