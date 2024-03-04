@@ -2,13 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import {offersData, reviewsData} from './mocks/offers-mocks';
-import { ReviewsTypes } from './types';
+import { ReviewsType, OffersTypes } from './types';
 
-export const Settings = {
+type SettingsType = {
+  numberOfRentalOffers: number;
+  offers: OffersTypes;
+  reviews: ReviewsType[];
+}
+
+export const Settings: SettingsType = {
   numberOfRentalOffers: 3,
   offers: offersData,
-  reviews: reviewsData as ReviewsTypes
-} as const;
+  reviews: reviewsData,
+} ;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
