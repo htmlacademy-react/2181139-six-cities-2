@@ -16,7 +16,6 @@ import { changingCity } from './action';
 
   return(
      <ul className="locations__list tabs__list">
-
         {citiesList.map((city) => (
           <div onClick={function selectCity() {
              dispatch({type: changingCity, payload: city})
@@ -28,7 +27,6 @@ import { changingCity } from './action';
           </li>
           </div>
         ))}
-
 </ul>);
  }
 
