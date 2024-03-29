@@ -22,7 +22,7 @@ import { changingCity } from './action';
           }} key={city}>
           <li className="locations__item" key={city}>
                <a className={`locations__item-link tabs__item ${cityFromState === city ? 'tabs__item--active' : ''} `} key={city} href="#">
-      <span>{city} key={city}</span>
+      <span key={city}> {city}</span>
     </a>
           </li>
           </div>
