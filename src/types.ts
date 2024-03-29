@@ -1,5 +1,12 @@
+import { store } from './store.tsx';
+
+export type State = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+
 export type OffersType = {
   id: number;
+  city: string;
   photos: string;
   title: string;
   description: string;
@@ -22,3 +29,6 @@ export type ReviewsType = {
 };
 
 export type ReviewsTypes = ReviewsType[];
+
+
+

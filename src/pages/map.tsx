@@ -5,6 +5,7 @@ import {Icon, Marker, layerGroup} from 'leaflet';
 import useMap from './main/useMap.tsx';
 import 'leaflet/dist/leaflet.css';
 
+
 type MapsPropsType = {
   points: OffersTypes;
 };

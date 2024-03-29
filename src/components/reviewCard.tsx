@@ -27,6 +27,3 @@ export default function ReviewCard({reviews} : ReviewsPropType) : JSX.Element{
 }
 
 
-// <li className="reviews__item" key={review.id}>
-//   <Review review={review} key={review.id}/>
-// </li>;

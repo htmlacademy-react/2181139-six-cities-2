@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import {offersData, } from './mocks/offers-mocks';
 import { OffersTypes, ReviewsTypes } from './types';
+import {Provider} from 'react-redux';
+import {store} from './store';
 
 const reviewsData: ReviewsTypes = [
   {
@@ -59,10 +61,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App
       numberOfRentalOffers={Settings.numberOfRentalOffers}
-      offersData={Settings.offers}
+      // offersData={Settings.offers}
       reviewsData={Settings.reviews}
     />
+    </Provider>
   </React.StrictMode>
 );
