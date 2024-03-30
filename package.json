@@ -6,8 +6,9 @@
     "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --fix ts,tsx",
-    "preview": "vite preview"
-
+    "fix": "eslint src --fix ts,tsx",
+    "preview": "vite preview",
+    "test": "vitest --passWithNoTests"
   },
   "eslintConfig": {
     "extends": [
@@ -35,7 +36,7 @@
     "@testing-library/user-event": "14.4.3",
     "@types/faker": "5.5.9",
     "@types/leaflet": "1.9.3",
-    "@types/node": "^16.11.20",
+    "@types/node": "16.11.20",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "@types/react-redux": "7.1.25",
@@ -50,7 +51,7 @@
     "eslint-plugin-react-refresh": "0.4.1",
     "faker": "5.5.3",
     "jsdom": "22.1.0",
-    "typescript": "^5.0.4",
+    "typescript": "5.0.4",
     "vite": "^4.5.2",
     "vitest": "0.32.2"
   },
