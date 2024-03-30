@@ -4,7 +4,7 @@ import { OffersTypes } from '../types.ts';
 export const offersData: OffersTypes = [
   {
     id: 1345,
-    city:'Paris',
+    city: 'Paris',
     photos: 'img/amsterdam.jpg',
     title: 'flat in Amsterdam',
     description: 'nice flat',
@@ -16,7 +16,7 @@ export const offersData: OffersTypes = [
   },
   {
     id: 1234,
-    city:'Paris',
+    city: 'Paris',
     photos: 'img/amsterdam@2x.jpg',
     title: 'house in Amsterdam',
     description: 'nice house',
@@ -28,7 +28,7 @@ export const offersData: OffersTypes = [
   },
   {
     id: 1456,
-    city:'Paris',
+    city: 'Paris',
     photos: 'img/apartment-01.jpg',
     title: 'apartment in Amsterdam',
     description: 'nice apartment',
@@ -40,7 +40,7 @@ export const offersData: OffersTypes = [
   },
   {
     id: 4567,
-    city:'Paris',
+    city: 'Paris',
     photos: 'img/apartment-03.jpg',
     title: 'apartment in Amsterdam',
     description: 'good apartment',

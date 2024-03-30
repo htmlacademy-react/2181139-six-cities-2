@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import {offersData, } from './mocks/offers-mocks';
+import { offersData, } from './mocks/offers-mocks';
 import { OffersTypes, ReviewsTypes } from './types';
-import {Provider} from 'react-redux';
-import {store} from './store';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const reviewsData: ReviewsTypes = [
   {
@@ -23,7 +23,8 @@ const reviewsData: ReviewsTypes = [
     date: 14020,
     text: 'bad choice',
   },
-  { id: 76,
+  {
+    id: 76,
     avatar: 'img/avatar.svg',
     name: 'Ramy',
     raiting: 3554,
@@ -53,7 +54,7 @@ export const Settings: SettingsType = {
   numberOfRentalOffers: 3,
   offers: offersData,
   reviews: reviewsData,
-} ;
+};
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -62,11 +63,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App
-      numberOfRentalOffers={Settings.numberOfRentalOffers}
-      // offersData={Settings.offers}
-      reviewsData={Settings.reviews}
-    />
+      <App
+        numberOfRentalOffers={Settings.numberOfRentalOffers}
+        // offersData={Settings.offers}
+        reviewsData={Settings.reviews}
+      />
     </Provider>
   </React.StrictMode>
 );

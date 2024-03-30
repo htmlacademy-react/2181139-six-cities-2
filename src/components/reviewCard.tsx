@@ -3,11 +3,11 @@ import { ReviewsTypes } from '../types';
 import Review from './review';
 
 type ReviewsPropType = {
-reviews : ReviewsTypes;
-// reviewsAmount : number;
+  reviews: ReviewsTypes;
+  // reviewsAmount : number;
 }
 
-export default function ReviewCard({reviews} : ReviewsPropType) : JSX.Element{
+export default function ReviewCard({ reviews }: ReviewsPropType): JSX.Element {
   const allReviews = reviews;
   return (
     <section className="offer__reviews reviews">
@@ -16,12 +16,12 @@ export default function ReviewCard({reviews} : ReviewsPropType) : JSX.Element{
         {allReviews.map((review) => (
           <li className="reviews__item" key={review.id}>
             <div>
-              <Review review={review}/>
+              <Review review={review} />
             </div>
           </li>
         ))}
       </ul>
-      <FormForReview/>
+      <FormForReview />
     </section>);
 
 }

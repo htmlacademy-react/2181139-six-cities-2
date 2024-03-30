@@ -6,7 +6,7 @@ type OneCardProps = {
   onMouseEnter: (a: number) => void;
 }
 
-function OneCard({offer, onMouseEnter} : OneCardProps) : JSX.Element{
+function OneCard({ offer, onMouseEnter }: OneCardProps): JSX.Element {
   const id = offer.id;
   const mouseEnter = onMouseEnter;
 
@@ -22,7 +22,7 @@ function OneCard({offer, onMouseEnter} : OneCardProps) : JSX.Element{
         </div>
         <div className="cities__image-wrapper place-card__image-wrapper">
           <Link to="/offer/:id">
-            <img className="place-card__image" src={offer.photos} width="260" height="200" alt="Place image"/>
+            <img className="place-card__image" src={offer.photos} width="260" height="200" alt="Place image" />
           </Link>
         </div>
         <div className="place-card__info">
@@ -40,7 +40,7 @@ function OneCard({offer, onMouseEnter} : OneCardProps) : JSX.Element{
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: '80%'}}></span>
+              <span style={{ width: '80%' }}></span>
               <span className="visually-hidden">Rating</span>
             </div>
           </div>

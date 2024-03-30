@@ -1,4 +1,4 @@
-import {createReducer} from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 import { changingCity } from './action.tsx';
 import { offersData } from './mocks/offers-mocks';
 
@@ -15,4 +15,4 @@ const reducer = createReducer(initialState, (builder) => {
     });
 });
 
-export {reducer};
+export { reducer };
