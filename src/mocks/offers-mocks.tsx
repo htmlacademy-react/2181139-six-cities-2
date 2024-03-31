@@ -1,6 +1,5 @@
 import { OffersTypes } from '../types.ts';
 
-
 export const offersData: OffersTypes = [
   {
     id: 1345,
@@ -50,10 +49,19 @@ export const offersData: OffersTypes = [
     lat: 52.3809553943508,
     lng: 4.939309666406198
   },
-
+  {
+    id: 4997,
+    city: 'Amsterdam',
+    photos: 'img/apartment-03.jpg',
+    title: 'apartment in Amsterdam',
+    description: 'good apartment',
+    type: 'apartment',
+    bedroomsQuantity: 1,
+    price: 200,
+    lat: 52.3805432943508,
+    lng: 4.939365436640198
+  },
 ];
-
-
 
 // export const reviewsData: ReviewsTypes = [
 //   {

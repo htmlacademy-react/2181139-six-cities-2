@@ -8,11 +8,10 @@ import OffersListNearby from '../../components/offer-card-list-nearby';
 type OffersPropsTypes = {
   offer: OffersType;
   reviews: ReviewsTypes;
-  offers: OffersTypes;
   offersNearby: OffersTypes;
 }
 
-function Offer({ offer, reviews, offers, offersNearby }: OffersPropsTypes): JSX.Element {
+function Offer({ offer, reviews, offersNearby }: OffersPropsTypes): JSX.Element {
   return (
     <div>
       <HeaderLogin />
@@ -141,7 +140,7 @@ function Offer({ offer, reviews, offers, offersNearby }: OffersPropsTypes): JSX.
             </div>
           </div>
           <section className="offer__map map">
-            <Map points={offers} />
+            <Map />
           </section>
         </section>
         <div className="container">

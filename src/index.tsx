@@ -65,7 +65,7 @@ root.render(
     <Provider store={store}>
       <App
         numberOfRentalOffers={Settings.numberOfRentalOffers}
-        // offersData={Settings.offers}
+        offersData={Settings.offers}
         reviewsData={Settings.reviews}
       />
     </Provider>

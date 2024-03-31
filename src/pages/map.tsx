@@ -1,14 +1,9 @@
-import { OffersTypes } from '../types.ts';
 import { URL_MARKER_DEFAULT } from '../pages/main/url.tsx';
 import { useRef, useEffect } from 'react';
 import { Icon, Marker, layerGroup } from 'leaflet';
 import useMap from './main/useMap.tsx';
 import 'leaflet/dist/leaflet.css';
-
-
-type MapsPropsType = {
-  points: OffersTypes;
-};
+import { useAppSelector } from '../hooks.tsx';
 
 // type Icon = {
 //   iconUrl: string;
@@ -30,8 +25,8 @@ const defaultCustomIcon = new Icon({
 // });
 
 
-export default function Map({ points }: MapsPropsType): JSX.Element {
-  const propPoints = points;
+export default function Map(): JSX.Element {
+  const propPoints = useAppSelector((state) => state.offersList);
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, propPoints[0]);

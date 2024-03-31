@@ -5,8 +5,6 @@ import { useState } from 'react';
 import Map from './map.tsx';
 import CitiesList from '../cities-list.tsx';
 
-
-
 const citiesAll = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
 type MainPageProps = {
@@ -55,12 +53,12 @@ function MainPage({ numberOfRentalOffers, offersData }: MainPageProps): JSX.Elem
                   </ul>
                 </form>
                 <div className="cities__places-list places__list tabs__content">
-                  <CardsList offersData={offersData} onMouseEnter={handler} />
+                  <CardsList onMouseEnter={handler} />
                 </div>
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map points={offersData} />
+                  <Map />
                 </section>
               </div>
             </div>
@@ -68,8 +66,6 @@ function MainPage({ numberOfRentalOffers, offersData }: MainPageProps): JSX.Elem
         </main>
       </div>
     </div>
-
-
   );
 }
 

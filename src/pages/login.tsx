@@ -41,7 +41,6 @@ function Login(): JSX.Element {
         </main>
       </div>
     </body>
-
   );
 }
 

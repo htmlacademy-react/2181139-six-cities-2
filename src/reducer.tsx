@@ -5,7 +5,7 @@ import { offersData } from './mocks/offers-mocks';
 const initialState = {
   city: 'Paris',
   offersList: offersData
-}
+};
 
 const reducer = createReducer(initialState, (builder) => {
   builder
