@@ -1,16 +1,16 @@
 import { OffersType } from '../types';
 
 type OfferNearbyProps = {
-offer: OffersType;
+  offer: OffersType;
 
 }
 
-export default function OfferNearby({offer} : OfferNearbyProps) : JSX.Element {
+export default function OfferNearby({ offer }: OfferNearbyProps): JSX.Element {
   return (
     <article className="near-places__card place-card">
       <div className="near-places__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={offer.photos} width="260" height="200" alt="Place image"/>
+          <img className="place-card__image" src={offer.photos} width="260" height="200" alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -28,7 +28,7 @@ export default function OfferNearby({offer} : OfferNearbyProps) : JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}></span>
+            <span style={{ width: '80%' }}></span>
             <span className="visually-hidden"> Rating</span>
           </div>
         </div>

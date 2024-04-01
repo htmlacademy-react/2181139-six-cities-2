@@ -1,14 +1,14 @@
-import {useEffect, useState, MutableRefObject, useRef} from 'react';
-import {Map, TileLayer} from 'leaflet';
+import { useEffect, useState, MutableRefObject, useRef } from 'react';
+import { Map, TileLayer } from 'leaflet';
 import { OffersType } from '../../types';
 
-export default function useMap(mapRef: MutableRefObject<HTMLElement | null>, offer: OffersType) : Map | null{
+export default function useMap(mapRef: MutableRefObject<HTMLElement | null>, offer: OffersType): Map | null {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
   const offerProp = offer;
 
   useEffect(() => {
-    if(mapRef.current !== null && !isRenderedRef.current){
+    if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = new Map(mapRef.current, {
 
         center: {
@@ -34,7 +34,7 @@ export default function useMap(mapRef: MutableRefObject<HTMLElement | null>, off
       setMap(instance);
       isRenderedRef.current = true;
     }
-  },[mapRef, offerProp.lng, offerProp.lat]);
+  }, [mapRef, offerProp.lng, offerProp.lat]);
 
   return map;
 }

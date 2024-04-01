@@ -1,16 +1,15 @@
-import { OffersTypes } from '../types';
 import OneCard from './one-card';
+import { useAppSelector } from '../hooks';
 
 type CardsListPropsTypes = {
-offersData: OffersTypes;
-onMouseEnter: (a: number) => void;
+  onMouseEnter: (a: number) => void;
 }
 
-function CardsList({offersData, onMouseEnter} : CardsListPropsTypes): JSX.Element {
-  const allOffers = offersData;
+function CardsList({onMouseEnter }: CardsListPropsTypes): JSX.Element {
+  const allOffers = useAppSelector((state) => state.offersList);
   return (
     <div className="cities__places-list places__list tabs__content">
-      {allOffers.map((offer) => <OneCard key={offer.id} offer={offer} onMouseEnter={onMouseEnter}/>)}
+      {allOffers.map((offer) => <OneCard key={offer.id} offer={offer} onMouseEnter={onMouseEnter} />)}
     </div>
   );
 }

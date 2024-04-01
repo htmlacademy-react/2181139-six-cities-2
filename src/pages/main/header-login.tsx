@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 
-export default function HeaderLogin() : JSX.Element{
+export default function HeaderLogin(): JSX.Element {
   return (
-
     <div className="container">
       <div className="header__wrapper">
         <div className="header__left">
           <Link className="header__logo-link header__logo-link--active" to="/">
-            <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+            <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
           </Link>
         </div>
         <nav className="header__nav">
@@ -30,9 +29,5 @@ export default function HeaderLogin() : JSX.Element{
       </div>
     </div>
 
-
-  // 1.если  не авторизован не показываем email и Favorites
-  // 2.26 строка должна sign in
-  // 3.при клике на кнопку ведем на стр /Login
   );
 }

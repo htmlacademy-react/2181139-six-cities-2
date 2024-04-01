@@ -6,7 +6,8 @@ import Favorites from '../../pages/main/favorite';
 import Offer from '../../pages/main/offer.tsx';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-root';
-import { OffersTypes, ReviewsTypes } from '../../types.ts';
+import { ReviewsTypes } from '../../types.ts';
+import { OffersTypes } from '../../types.ts';
 
 type AppScreenProps = {
   numberOfRentalOffers: number;
@@ -15,6 +16,7 @@ type AppScreenProps = {
 }
 
 function App ({numberOfRentalOffers, offersData, reviewsData} : AppScreenProps) :JSX.Element {
+
   return (
     <BrowserRouter>
       <Routes>
@@ -38,7 +40,7 @@ function App ({numberOfRentalOffers, offersData, reviewsData} : AppScreenProps) 
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer offer={offersData[0]} reviews={reviewsData} offers={offersData} offersNearby={offersData}/>}
+          element={<Offer offer={offersData[0]} reviews={reviewsData} offersNearby={offersData}/>}
         />
         <Route
           path="*"

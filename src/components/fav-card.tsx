@@ -1,11 +1,11 @@
 import { OffersType } from '../types';
 
 type FavCardsProps = {
-offers: OffersType;
+  offers: OffersType;
 }
 
 
-export default function FavCards({offers} : FavCardsProps) : JSX.Element{
+export default function FavCards({ offers }: FavCardsProps): JSX.Element {
   return (
     <article className="favorites__card place-card">
       <div className="place-card__mark">
@@ -13,7 +13,7 @@ export default function FavCards({offers} : FavCardsProps) : JSX.Element{
       </div>
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={offers.photos} width="150" height="110" alt="Place image"/>
+          <img className="place-card__image" src={offers.photos} width="150" height="110" alt="Place image" />
         </a>
       </div>
       <div className="favorites__card-info place-card__info">
@@ -31,7 +31,7 @@ export default function FavCards({offers} : FavCardsProps) : JSX.Element{
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '100%'}}></span>
+            <span style={{ width: '100%' }}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
