@@ -38,7 +38,7 @@ function MainPage({ numberOfRentalOffers, offersData }: MainPageProps): JSX.Elem
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{numberOfRentalOffers} places to stay in Amsterdam</b>
-             <Sorting/>
+                <Sorting/>
                 <div className="cities__places-list places__list tabs__content">
                   <CardsList onMouseEnter={handler} />
                 </div>

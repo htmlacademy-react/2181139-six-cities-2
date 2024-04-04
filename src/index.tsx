@@ -6,7 +6,7 @@ import { OffersTypes, ReviewsTypes } from './types';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
- export const reviewsData: ReviewsTypes = [
+export const reviewsData: ReviewsTypes = [
   {
     id: 134,
     avatar: 'img/avatar.svg',

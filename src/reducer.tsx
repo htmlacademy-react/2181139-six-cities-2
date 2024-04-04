@@ -10,15 +10,14 @@ const initialState = {
 };
 
 const reducer = createReducer(initialState, (builder) => {
-  console.log('jghgfhfhg');
   builder
     .addCase(changingCity, (state, action) => {
       state.city = action.payload;
       state.offersList = offersData.filter((off) => off.city === state.city);
     })
     .addCase(changingSortingPopular, (state, action) => {
-     state.sorting = action.payload;
-     state.offersList = offersData;
+      state.sorting = action.payload;
+      state.offersList = offersData;
     })
     .addCase(changingSortingPriceHighToLow, (state, action) => {
       state.sorting = action.payload;
@@ -33,9 +32,8 @@ const reducer = createReducer(initialState, (builder) => {
       state.offersList = state.offersList.sort((a, b) => b.rating - a.rating);
     })
     .addCase(changingHoveredCard, (state, action) => {
-      console.log(action, state);
       state.hoveredCard = action.payload;
-    })
+    });
 
 });
 

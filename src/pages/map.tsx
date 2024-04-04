@@ -17,8 +17,6 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-console.log('red flag', URL_MARKER_CURRENT);
-
 export default function Map(): JSX.Element {
   const propPoints = useAppSelector((state) => state.offersList);
   const hoveredCard = useAppSelector((state) => state.hoveredCard);
@@ -34,7 +32,6 @@ export default function Map(): JSX.Element {
           lat: point.lat,
           lng: point.lng
         });
-       console.log(hoveredCard, point.id)
         marker
           .setIcon(
             hoveredCard === point.id ? currentCustomIcon : defaultCustomIcon

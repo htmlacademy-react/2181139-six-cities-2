@@ -22,5 +22,5 @@ export const changingSortingTopRatedFirst = createAction('changingSortingTopRate
 
 export const changingHoveredCard = createAction('changingHoveredCard', (value: number) => ({
   payload: value,
-}))
+}));
 

@@ -20,10 +20,9 @@ function OneCard({ offer, onMouseEnter }: OneCardProps): JSX.Element {
   return (
     <div onMouseEnter={function sendingId() {
       handler();
-      console.log('we are here', changingHoveredCard(1));
-      // {type: 'changingHoveredCard', payload: 1
-      dispatch(changingHoveredCard(id))
-      }}>
+      dispatch(changingHoveredCard(id));
+    }}
+    >
       <article className="cities__card place-card">
         <div className="place-card__mark">
           <span>Premium</span>

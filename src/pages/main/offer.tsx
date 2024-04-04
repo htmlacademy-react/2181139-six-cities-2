@@ -13,7 +13,7 @@ type OffersPropsTypes = {
 }
 
 function Offer({reviews, offersNearby }: OffersPropsTypes): JSX.Element {
-  let { id } = useParams();
+  const { id } = useParams();
   const offer = useAppSelector((state) => state.offersList.find((of) => of.id === Number(id)));
 
   return (
