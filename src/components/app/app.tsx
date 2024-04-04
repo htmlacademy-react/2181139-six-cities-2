@@ -40,7 +40,7 @@ function App ({numberOfRentalOffers, offersData, reviewsData} : AppScreenProps) 
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer offer={offersData[0]} reviews={reviewsData} offersNearby={offersData}/>}
+          element={<Offer reviews={reviewsData} offersNearby={offersData}/>}
         />
         <Route
           path="*"

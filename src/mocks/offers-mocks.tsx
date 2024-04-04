@@ -3,6 +3,7 @@ import { OffersTypes } from '../types.ts';
 export const offersData: OffersTypes = [
   {
     id: 1345,
+    rating: 10,
     city: 'Paris',
     photos: 'img/amsterdam.jpg',
     title: 'flat in Amsterdam',
@@ -15,6 +16,7 @@ export const offersData: OffersTypes = [
   },
   {
     id: 1234,
+    rating: 9,
     city: 'Paris',
     photos: 'img/amsterdam@2x.jpg',
     title: 'house in Amsterdam',
@@ -27,6 +29,7 @@ export const offersData: OffersTypes = [
   },
   {
     id: 1456,
+    rating: 16,
     city: 'Paris',
     photos: 'img/apartment-01.jpg',
     title: 'apartment in Amsterdam',
@@ -39,6 +42,7 @@ export const offersData: OffersTypes = [
   },
   {
     id: 4567,
+    rating: 19,
     city: 'Paris',
     photos: 'img/apartment-03.jpg',
     title: 'apartment in Amsterdam',
@@ -51,6 +55,7 @@ export const offersData: OffersTypes = [
   },
   {
     id: 4997,
+    rating: 16,
     city: 'Amsterdam',
     photos: 'img/apartment-03.jpg',
     title: 'apartment in Amsterdam',

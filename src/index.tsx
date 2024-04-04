@@ -6,7 +6,7 @@ import { OffersTypes, ReviewsTypes } from './types';
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-const reviewsData: ReviewsTypes = [
+export const reviewsData: ReviewsTypes = [
   {
     id: 134,
     avatar: 'img/avatar.svg',
@@ -39,7 +39,6 @@ const reviewsData: ReviewsTypes = [
     date: 1436320,
     text: 'good choice',
   }
-
 
 ];
 

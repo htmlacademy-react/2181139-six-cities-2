@@ -1,5 +1,7 @@
 import { OffersType } from '../types';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../hooks';
+import { changingHoveredCard } from '../action';
 
 type OneCardProps = {
   offer: OffersType;
@@ -7,6 +9,7 @@ type OneCardProps = {
 }
 
 function OneCard({ offer, onMouseEnter }: OneCardProps): JSX.Element {
+  const dispatch = useAppDispatch();
   const id = offer.id;
   const mouseEnter = onMouseEnter;
 
@@ -15,13 +18,17 @@ function OneCard({ offer, onMouseEnter }: OneCardProps): JSX.Element {
   };
 
   return (
-    <div onMouseEnter={handler}>
+    <div onMouseEnter={function sendingId() {
+      handler();
+      dispatch(changingHoveredCard(id));
+    }}
+    >
       <article className="cities__card place-card">
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
         <div className="cities__image-wrapper place-card__image-wrapper">
-          <Link to="/offer/:id">
+          <Link to={`/offer/${id}`}>
             <img className="place-card__image" src={offer.photos} width="260" height="200" alt="Place image" />
           </Link>
         </div>
