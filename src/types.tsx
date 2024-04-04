@@ -6,6 +6,7 @@ export type AppDispatch = typeof store.dispatch;
 
 export type OffersType = {
   id: number;
+  rating: number;
   city: string;
   photos: string;
   title: string;
