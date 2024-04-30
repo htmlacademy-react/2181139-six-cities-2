@@ -1,23 +1,34 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changingCity, changingSortingPopular, changingSortingPriceHighToLow, changingSortingPriceLowToHigh, changingSortingTopRatedFirst, changingHoveredCard } from './action.tsx';
-import { offersData } from './mocks/offers-mocks';
+import { changingCity, changingSortingPopular, changingSortingPriceHighToLow, changingSortingPriceLowToHigh, changingSortingTopRatedFirst, changingHoveredCard, loadingCards, loadingReviews, setQuestionsDataLoadingStatus } from './action.tsx';
+import { OffersType ,OffersTypes, ReviewsTypes} from './types.tsx';
 
-const initialState = {
+type stateType = {
+  city: string,
+  offersList: OffersTypes ,
+  sorting: string,
+  hoveredCard: string,
+  reviews: ReviewsTypes,
+  isQuestionsDataLoading: boolean,
+}
+
+const initialState : stateType= {
   city: 'Paris',
-  offersList: offersData.filter((of) => of.city === 'Paris'),
+  offersList: [],
   sorting: 'Popular',
-  hoveredCard: 0,
+  hoveredCard: '0',
+  reviews: [],
+  isQuestionsDataLoading: false,
 };
 
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changingCity, (state, action) => {
       state.city = action.payload;
-      state.offersList = offersData.filter((off) => off.city === state.city);
+      state.offersList = state.offersList.filter((off: OffersType) => off.city.name === state.city);
     })
     .addCase(changingSortingPopular, (state, action) => {
       state.sorting = action.payload;
-      state.offersList = offersData;
+      state.offersList = state.offersList;
     })
     .addCase(changingSortingPriceHighToLow, (state, action) => {
       state.sorting = action.payload;
@@ -33,8 +44,17 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(changingHoveredCard, (state, action) => {
       state.hoveredCard = action.payload;
-    });
+    })
+    .addCase(loadingCards, (state, action) => {
+      state.offersList = action.payload;
 
+    })
+    .addCase(loadingReviews, (state, action) => {
+     state.reviews = action.payload;
+    })
+    .addCase(setQuestionsDataLoadingStatus, (state, action) => {
+      state.isQuestionsDataLoading = action.payload;
+    })
 });
 
 export { reducer };

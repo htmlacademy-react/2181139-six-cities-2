@@ -1,7 +1,7 @@
 import CardsList from '../components/cards-list.tsx';
-import { OffersTypes } from '../types.ts';
+// import { OffersTypes } from '../types.ts';
 import HeaderLogin from './main/header-login.tsx';
-import { useState } from 'react';
+// import { useState } from 'react';
 import Map from './map.tsx';
 import CitiesList from '../cities-list.tsx';
 import Sorting from '../sorting.tsx';
@@ -10,13 +10,14 @@ const citiesAll = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Duss
 
 type MainPageProps = {
   numberOfRentalOffers: number;
-  offersData: OffersTypes;
+  // offersData: OffersTypes;
 }
 
-function MainPage({ numberOfRentalOffers, offersData }: MainPageProps): JSX.Element {
+function MainPage({ numberOfRentalOffers }: MainPageProps): JSX.Element {
 
-  const [, setActiveCard] = useState<number>(offersData[0].id);
-  const handler = (id: number) => setActiveCard(id);
+
+  // const [, setActiveCard] = useState<string>(offersData[0].id);
+  // const handler = (id: string) => setActiveCard(id);
 
   return (
 
@@ -40,7 +41,8 @@ function MainPage({ numberOfRentalOffers, offersData }: MainPageProps): JSX.Elem
                 <b className="places__found">{numberOfRentalOffers} places to stay in Amsterdam</b>
                 <Sorting/>
                 <div className="cities__places-list places__list tabs__content">
-                  <CardsList onMouseEnter={handler} />
+                  <CardsList />
+                  {/* onMouseEnter={handler} */}
                 </div>
               </section>
               <div className="cities__right-section">

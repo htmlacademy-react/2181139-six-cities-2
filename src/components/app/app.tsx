@@ -6,23 +6,29 @@ import Favorites from '../../pages/main/favorite';
 import Offer from '../../pages/main/offer.tsx';
 import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-root';
-import { ReviewsTypes } from '../../types.ts';
-import { OffersTypes } from '../../types.ts';
+import { useAppSelector } from '../../hooks.tsx';
+import { LoadingScreen } from '../../loading-screen.tsx';
 
 type AppScreenProps = {
   numberOfRentalOffers: number;
-  offersData: OffersTypes;
-  reviewsData: ReviewsTypes;
 }
 
-function App ({numberOfRentalOffers, offersData, reviewsData} : AppScreenProps) :JSX.Element {
+function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
 
+const offersData = useAppSelector((state) => state.offersList);
+const isQuestionsDataLoading = useAppSelector((state) => state.isQuestionsDataLoading);
+
+if(isQuestionsDataLoading){
+return (
+ < LoadingScreen/>
+);
+}
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage numberOfRentalOffers={numberOfRentalOffers} offersData={offersData} />}
+          element={<MainPage numberOfRentalOffers={numberOfRentalOffers} />}
         />
         <Route
           path={AppRoute.Login}
@@ -40,7 +46,7 @@ function App ({numberOfRentalOffers, offersData, reviewsData} : AppScreenProps) 
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer reviews={reviewsData} offersNearby={offersData}/>}
+          element={<Offer offersNearby={offersData}/>}
         />
         <Route
           path="*"

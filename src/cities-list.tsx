@@ -16,7 +16,7 @@ export default function CitiesList({ cities }: CityPropType): JSX.Element {
     <ul className="locations__list tabs__list">
       {citiesList.map((city) => (
         <div onClick={function selectCity() {
-          dispatch({ type: changingCity, payload: city });
+          dispatch(changingCity(city));
         }} key={city}
         >
           <li className="locations__item" key={city}>
