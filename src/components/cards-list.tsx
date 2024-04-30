@@ -9,8 +9,8 @@ function CardsList(): JSX.Element {
   const [, setActiveCard] = useState<string>('');
 
   function handler(id: string) {
-     setActiveCard(id);
-  };
+    setActiveCard(id);
+  }
 
   const allOffers = useAppSelector((state) => state.offersList);
 

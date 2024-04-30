@@ -20,8 +20,8 @@ function Offer({ offersNearby }: OffersPropsTypes): JSX.Element {
   const offer = useAppSelector((state) => state.offersList.find((of) => of.id === id));
   useEffect(() => {
     if(id){
-    dispatch(fetchReviewsAction(id));
-  }
+      dispatch(fetchReviewsAction(id));
+    }
   }, [id]);
 
   const reviews = useAppSelector((state) => state.reviews);

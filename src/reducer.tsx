@@ -3,15 +3,15 @@ import { changingCity, changingSortingPopular, changingSortingPriceHighToLow, ch
 import { OffersType ,OffersTypes, ReviewsTypes} from './types.tsx';
 
 type stateType = {
-  city: string,
-  offersList: OffersTypes ,
-  sorting: string,
-  hoveredCard: string,
-  reviews: ReviewsTypes,
-  isQuestionsDataLoading: boolean,
+  city: string;
+  offersList: OffersTypes ;
+  sorting: string;
+  hoveredCard: string;
+  reviews: ReviewsTypes;
+  isQuestionsDataLoading: boolean;
 }
 
-const initialState : stateType= {
+const initialState : stateType = {
   city: 'Paris',
   offersList: [],
   sorting: 'Popular',
@@ -28,7 +28,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(changingSortingPopular, (state, action) => {
       state.sorting = action.payload;
-      state.offersList = state.offersList;
     })
     .addCase(changingSortingPriceHighToLow, (state, action) => {
       state.sorting = action.payload;
@@ -50,11 +49,11 @@ const reducer = createReducer(initialState, (builder) => {
 
     })
     .addCase(loadingReviews, (state, action) => {
-     state.reviews = action.payload;
+      state.reviews = action.payload;
     })
     .addCase(setQuestionsDataLoadingStatus, (state, action) => {
       state.isQuestionsDataLoading = action.payload;
-    })
+    });
 });
 
 export { reducer };

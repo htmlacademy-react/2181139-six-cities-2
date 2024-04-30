@@ -10,4 +10,4 @@ export const createApi = (): AxiosInstance => {
   });
 
   return api;
-}
+};

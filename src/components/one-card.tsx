@@ -23,10 +23,10 @@ function OneCard({ offer, onMouseEnter }: OneCardProps): JSX.Element {
       handler();
       dispatch(changingHoveredCard(`${id}`));
     }}
->
+    >
       <article className="cities__card place-card">
         <div className="place-card__mark">
-          <span>{offer.isPremium ? 'Premium' : ""}</span>
+          <span>{offer.isPremium ? 'Premium' : ''}</span>
         </div>
         <div className="cities__image-wrapper place-card__image-wrapper">
           <Link to={`/offer/${id}`}>

@@ -9,28 +9,27 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   state: State;
   extra: AxiosInstance;
 }>
-  (
-    'loadingCards',
-    async (_arg, { dispatch, extra: api }) => {
-      dispatch(setQuestionsDataLoadingStatus(true));
-      const { data } = await api.get<OffersTypes>('/six-cities/offers');
-      dispatch(setQuestionsDataLoadingStatus(false));
-      dispatch({type: 'loadingCards',payload: data});
-    },
-  );
+(
+  'loadingCards',
+  async (_arg, { dispatch, extra: api }) => {
+    dispatch(setQuestionsDataLoadingStatus(true));
+    const { data } = await api.get<OffersTypes>('/six-cities/offers');
+    dispatch(setQuestionsDataLoadingStatus(false));
+    dispatch({type: 'loadingCards',payload: data});
+  },
+);
 
 export const fetchReviewsAction = createAsyncThunk<void, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>
-  (
-    'loadingReviews',
-    async (id: string, { dispatch, extra: api }) => {
-      const { data } = await api.get<ReviewsTypes>(`/six-cities/comments/${id}`);
-      dispatch(loadingReviews(data));
-    },
-  );
-
+(
+  'loadingReviews',
+  async (id: string, { dispatch, extra: api }) => {
+    const { data } = await api.get<ReviewsTypes>(`/six-cities/comments/${id}`);
+    dispatch(loadingReviews(data));
+  },
+);
 
 

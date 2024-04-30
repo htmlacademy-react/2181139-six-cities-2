@@ -4,7 +4,7 @@ import { Icon, Marker, layerGroup } from 'leaflet';
 import useMap from './main/useMap.tsx';
 import 'leaflet/dist/leaflet.css';
 import { useAppSelector } from '../hooks.tsx';
-import { OffersType , OffersTypes} from '../types.tsx';
+import { OffersType} from '../types.tsx';
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -19,10 +19,10 @@ const currentCustomIcon = new Icon({
 });
 
 export default function Map(): JSX.Element {
-  const propPoints = useAppSelector((state) => state.offersList as OffersTypes);
+  const propPoints = useAppSelector((state) => state.offersList);
   const hoveredCard = useAppSelector((state) => state.hoveredCard);
   const mapRef = useRef(null);
-  const map = useMap(mapRef, propPoints[0] as OffersType);
+  const map = useMap(mapRef, propPoints[0]);
 
   useEffect(() => {
     if (map) {

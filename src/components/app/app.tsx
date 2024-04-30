@@ -15,14 +15,14 @@ type AppScreenProps = {
 
 function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
 
-const offersData = useAppSelector((state) => state.offersList);
-const isQuestionsDataLoading = useAppSelector((state) => state.isQuestionsDataLoading);
+  const offersData = useAppSelector((state) => state.offersList);
+  const isQuestionsDataLoading = useAppSelector((state) => state.isQuestionsDataLoading);
 
-if(isQuestionsDataLoading){
-return (
- < LoadingScreen/>
-);
-}
+  if(isQuestionsDataLoading){
+    return (
+      < LoadingScreen/>
+    );
+  }
   return (
     <BrowserRouter>
       <Routes>
