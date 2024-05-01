@@ -1,20 +1,30 @@
 import { OffersTypes } from '../../types';
 import HeaderLogin from './header-login';
 import ReviewCard from '../../components/reviewCard';
-import { ReviewsTypes } from '../../types';
 import Map from '../map';
 import OffersListNearby from '../../components/offer-card-list-nearby';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
+import { useEffect } from 'react';
+import { fetchReviewsAction } from '../../async-actions';
+import { useAppDispatch } from '../../hooks';
+
 
 type OffersPropsTypes = {
-  reviews: ReviewsTypes;
   offersNearby: OffersTypes;
 }
 
-function Offer({reviews, offersNearby }: OffersPropsTypes): JSX.Element {
+function Offer({ offersNearby }: OffersPropsTypes): JSX.Element {
+  const dispatch = useAppDispatch();
   const { id } = useParams();
-  const offer = useAppSelector((state) => state.offersList.find((of) => of.id === Number(id)));
+  const offer = useAppSelector((state) => state.offersList.find((of) => of.id === id));
+  useEffect(() => {
+    if(id){
+      dispatch(fetchReviewsAction(id));
+    }
+  }, [id]);
+
+  const reviews = useAppSelector((state) => state.reviews);
 
   return (
     <div>
@@ -24,7 +34,7 @@ function Offer({reviews, offersNearby }: OffersPropsTypes): JSX.Element {
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
               <div className="offer__image-wrapper">
-                <img className="offer__image" src={offer?.photos} alt="Photo studio" />
+                <img className="offer__image" src='img/apartment-01.jpg' alt="Photo studio" />
               </div>
               <div className="offer__image-wrapper">
                 <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
@@ -131,7 +141,7 @@ function Offer({reviews, offersNearby }: OffersPropsTypes): JSX.Element {
                 </div>
                 <div className="offer__description">
                   <p className="offer__text">
-                    {offer?.description}
+                    {}
                   </p>
                   <p className="offer__text">
                     An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.

@@ -1,4 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
+import { OffersTypes, ReviewsTypes } from './types';
 
 export const changingCity = createAction('changingCity', (value: string) => ({
   payload: value,
@@ -20,7 +21,17 @@ export const changingSortingTopRatedFirst = createAction('changingSortingTopRate
   payload: value,
 }));
 
-export const changingHoveredCard = createAction('changingHoveredCard', (value: number) => ({
+export const changingHoveredCard = createAction('changingHoveredCard', (value: string) => ({
   payload: value,
 }));
+
+export const loadingCards = createAction('loadingCards', (value: OffersTypes) => ({
+  payload: value
+}));
+
+export const loadingReviews = createAction('loadingReviews', (value: ReviewsTypes) => ({
+  payload: value
+}));
+
+export const setQuestionsDataLoadingStatus = createAction<boolean>('data/setQuestionsDataLoadingStatus');
 

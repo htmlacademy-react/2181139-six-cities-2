@@ -22,17 +22,17 @@ export default function Sorting(): JSX.Element {
         <li className={`places__option ${sortingFromState === 'Low to high' ? 'places__option--active' : ''}`} tabIndex={0} onClick={function selectSorting2() {
           dispatch(changingSortingPriceLowToHigh('Low to high'));
         }}
-        >Price: low to high
+        > Price: low to high
         </li>
         <li className={`places__option ${sortingFromState === 'High to low' ? 'places__option--active' : ''}`} tabIndex={0} onClick={function selectSorting3() {
           dispatch(changingSortingPriceHighToLow('High to low'));
         }}
-        >Price: high to low
+        > Price: high to low
         </li>
         <li className={`places__option ${sortingFromState === 'Top rated first' ? 'places__option--active' : ''}`} tabIndex={0} onClick={function selectSorting4() {
           dispatch(changingSortingTopRatedFirst('Top rated first'));
         }}
-        >Top rated first
+        > Top rated first
         </li>
       </ul>
     </form>);

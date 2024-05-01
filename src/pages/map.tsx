@@ -4,6 +4,7 @@ import { Icon, Marker, layerGroup } from 'leaflet';
 import useMap from './main/useMap.tsx';
 import 'leaflet/dist/leaflet.css';
 import { useAppSelector } from '../hooks.tsx';
+import { OffersType} from '../types.tsx';
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -27,10 +28,10 @@ export default function Map(): JSX.Element {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
 
-      propPoints.forEach((point) => {
+      propPoints.forEach((point: OffersType) => {
         const marker = new Marker({
-          lat: point.lat,
-          lng: point.lng
+          lat: point.location.latitude,
+          lng: point.location.longitude
         });
         marker
           .setIcon(

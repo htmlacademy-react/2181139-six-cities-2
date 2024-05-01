@@ -8,16 +8,14 @@ export default function useMap(mapRef: MutableRefObject<HTMLElement | null>, off
   const offerProp = offer;
 
   useEffect(() => {
-    if (mapRef.current !== null && !isRenderedRef.current) {
+    if (mapRef.current !== null && !isRenderedRef.current && offerProp) {
       const instance = new Map(mapRef.current, {
 
         center: {
-          lat: offerProp.lat,
-          lng: offerProp.lng
-          // lat: 52.3909553943508,
-          // lng: 4.85309666406198,
+          lat: offerProp.city.location.latitude,
+          lng: offerProp.city.location.longitude
         },
-        zoom: 14,
+        zoom: 8,
 
 
       });
@@ -34,7 +32,7 @@ export default function useMap(mapRef: MutableRefObject<HTMLElement | null>, off
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, offerProp.lng, offerProp.lat]);
+  }, [mapRef, offerProp]);
 
   return map;
 }
