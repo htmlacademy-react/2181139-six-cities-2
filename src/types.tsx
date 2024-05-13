@@ -1,4 +1,3 @@
-
 import { store } from './index.tsx';
 
 export type State = ReturnType<typeof store.getState>;
@@ -80,3 +79,16 @@ export type ReviewsType = {
 };
 
 export type ReviewsTypes = ReviewsType[];
+
+export type AuthorizationStatusType = {
+  name: string,
+  avatarUrl: string,
+  isPro: boolean,
+  email: string,
+  token: string
+  };
+
+  export type AuthDataType = {
+    login: string;
+    password: string;
+  };

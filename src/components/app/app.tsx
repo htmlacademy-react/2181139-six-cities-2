@@ -1,11 +1,11 @@
 import MainPage from '../../pages/main';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import Login from '../../pages/login';
 import Favorites from '../../pages/main/favorite';
 import Offer from '../../pages/main/offer.tsx';
 import NotFound from '../../pages/not-found';
-import PrivateRoute from '../private-root';
+import PrivateRoute from '../private-route.tsx';
 import { useAppSelector } from '../../hooks.tsx';
 import { LoadingScreen } from '../../loading-screen.tsx';
 
@@ -16,7 +16,7 @@ type AppScreenProps = {
 function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
 
   const offersData = useAppSelector((state) => state.offersList);
-  const isQuestionsDataLoading = useAppSelector((state) => state.isQuestionsDataLoading);
+  const isQuestionsDataLoading = useAppSelector((state) => state.isOffersDataLoading);
 
   if(isQuestionsDataLoading){
     return (
@@ -37,9 +37,7 @@ function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.Auth}
-            >
+            <PrivateRoute>
               <Favorites offersData={offersData} />
             </PrivateRoute>
           }

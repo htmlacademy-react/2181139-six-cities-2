@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../hooks';
+import { AuthorizationStatus } from '../../const';
 
 export default function HeaderLogin(): JSX.Element {
+const authStatus = useAppSelector((state) => state.authorizationStatus);
+
   return (
     <div className="container">
       <div className="header__wrapper">
@@ -10,7 +14,7 @@ export default function HeaderLogin(): JSX.Element {
           </Link>
         </div>
         <nav className="header__nav">
-          <ul className="header__nav-list">
+        {authStatus === AuthorizationStatus.Auth ? <ul className="header__nav-list">
             <li className="header__nav-item user">
               <div className="header__nav-link header__nav-link--profile">
                 <div className="header__avatar-wrapper user__avatar-wrapper">
@@ -24,7 +28,18 @@ export default function HeaderLogin(): JSX.Element {
                 <span className="header__signout">Sign out</span>
               </a>
             </li>
-          </ul>
+          </ul> :
+          <ul className="header__nav-list">
+          <li className="header__nav-item user">
+            <div className="header__nav-link header__nav-link--profile">
+              <div className="header__avatar-wrapper user__avatar-wrapper">
+              </div>
+              <Link className="header__login" to='/login'>Sign in</Link>
+            </div>
+          </li>
+        </ul>
+          }
+
         </nav>
       </div>
     </div>

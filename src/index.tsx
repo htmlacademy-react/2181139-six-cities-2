@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { reducer } from './reducer';
 import { createApi } from './api';
-// import { useAppSelector } from './hooks';
-import { fetchOffersAction } from './async-actions';
-
+import { fetchOffersAction, checkAuthAction } from './async-actions';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const api = createApi();
 
@@ -22,6 +22,7 @@ export const store = configureStore({
 });
 
 store.dispatch(fetchOffersAction());
+store.dispatch(checkAuthAction());
 
 type SettingsType = {
   numberOfRentalOffers: number;
@@ -38,6 +39,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+    <ToastContainer />
       <App
         numberOfRentalOffers={Settings.numberOfRentalOffers}
       />

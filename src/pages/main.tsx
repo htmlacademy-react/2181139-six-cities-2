@@ -1,7 +1,5 @@
 import CardsList from '../components/cards-list.tsx';
-// import { OffersTypes } from '../types.ts';
 import HeaderLogin from './main/header-login.tsx';
-// import { useState } from 'react';
 import Map from './map.tsx';
 import CitiesList from '../cities-list.tsx';
 import Sorting from '../sorting.tsx';
@@ -10,14 +8,9 @@ const citiesAll = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Duss
 
 type MainPageProps = {
   numberOfRentalOffers: number;
-  // offersData: OffersTypes;
 }
 
 function MainPage({ numberOfRentalOffers }: MainPageProps): JSX.Element {
-
-
-  // const [, setActiveCard] = useState<string>(offersData[0].id);
-  // const handler = (id: string) => setActiveCard(id);
 
   return (
 
@@ -30,7 +23,6 @@ function MainPage({ numberOfRentalOffers }: MainPageProps): JSX.Element {
           <h1 className="visually-hidden">Cities</h1>
           <div className="tabs">
             <section className="locations container">
-
               <CitiesList cities={citiesAll} />
             </section>
           </div>
@@ -42,7 +34,6 @@ function MainPage({ numberOfRentalOffers }: MainPageProps): JSX.Element {
                 <Sorting/>
                 <div className="cities__places-list places__list tabs__content">
                   <CardsList />
-                  {/* onMouseEnter={handler} */}
                 </div>
               </section>
               <div className="cities__right-section">

@@ -1,5 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
-import { OffersTypes, ReviewsTypes } from './types';
+import { OffersTypes, ReviewsTypes , AuthorizationStatusType} from './types';
+import { AuthorizationStatus } from './const';
 
 export const changingCity = createAction('changingCity', (value: string) => ({
   payload: value,
@@ -33,5 +34,11 @@ export const loadingReviews = createAction('loadingReviews', (value: ReviewsType
   payload: value
 }));
 
-export const setQuestionsDataLoadingStatus = createAction<boolean>('data/setQuestionsDataLoadingStatus');
+export const setDataLoadingStatus = createAction<boolean>('setDataLoadingStatus');
+
+export const requireAuthorization = createAction<AuthorizationStatus>('requireAuthorization');
+
+export const setAuthData = createAction('setAuthData', (value: AuthorizationStatusType) => ({
+  payload: value
+}));
 
