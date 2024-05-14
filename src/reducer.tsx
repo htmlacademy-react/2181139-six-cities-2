@@ -12,7 +12,7 @@ type stateType = {
   reviews: ReviewsTypes;
   isOffersDataLoading: boolean;
   authorizationStatus: AuthorizationStatus;
-  authorizationData:  AuthorizationStatusType;
+  authorizationData: AuthorizationStatusType;
 }
 
 const initialState : stateType = {
@@ -25,13 +25,12 @@ const initialState : stateType = {
   authorizationStatus: AuthorizationStatus.NoAuth,
   authorizationData: {
     name: '',
-  avatarUrl: '',
-  isPro: false,
-  email: '',
-  token: ''
+    avatarUrl: '',
+    isPro: false,
+    email: '',
+    token: ''
   },
 };
-
 
 
 const reducer = createReducer(initialState, (builder) => {
@@ -72,7 +71,7 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAuthData, (state, action) => {
       state.authorizationData = action.payload;
-    })
+    });
 });
 
 export { reducer };

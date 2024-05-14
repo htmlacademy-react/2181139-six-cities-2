@@ -11,28 +11,28 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   state: State;
   extra: AxiosInstance;
 }>
-  (
-    'loadingCards',
-    async (_arg, { dispatch, extra: api }) => {
-      dispatch(setDataLoadingStatus(true));
-      const { data } = await api.get<OffersTypes>('/six-cities/offers');
-      dispatch(setDataLoadingStatus(false));
-      dispatch({ type: 'loadingCards', payload: data });
-    },
-  );
+(
+  'loadingCards',
+  async (_arg, { dispatch, extra: api }) => {
+    dispatch(setDataLoadingStatus(true));
+    const { data } = await api.get<OffersTypes>('/six-cities/offers');
+    dispatch(setDataLoadingStatus(false));
+    dispatch({ type: 'loadingCards', payload: data });
+  },
+);
 
 export const fetchReviewsAction = createAsyncThunk<void, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>
-  (
-    'loadingReviews',
-    async (id: string, { dispatch, extra: api }) => {
-      const { data } = await api.get<ReviewsTypes>(`/six-cities/comments/${id}`);
-      dispatch(loadingReviews(data));
-    },
-  );
+(
+  'loadingReviews',
+  async (id: string, { dispatch, extra: api }) => {
+    const { data } = await api.get<ReviewsTypes>(`/six-cities/comments/${id}`);
+    dispatch(loadingReviews(data));
+  },
+);
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -63,7 +63,7 @@ export const loginAction = createAsyncThunk<void, AuthDataType, {
   async ({ login: email, password }, { dispatch, extra: api }) => {
     try {
       const response = await api.post<AuthorizationStatusType>('/six-cities/login', { email, password });
-      const token = response.data.token
+      const token = response.data.token;
 
       saveToken(token);
       dispatch(requireAuthorization(AuthorizationStatus.Auth));
@@ -71,6 +71,5 @@ export const loginAction = createAsyncThunk<void, AuthDataType, {
       dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
     }
   });
-
 
 

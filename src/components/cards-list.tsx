@@ -4,7 +4,6 @@ import { OffersType } from '../types';
 import { useState } from 'react';
 
 
-
 function CardsList(): JSX.Element {
 
   const [, setActiveCard] = useState<string>('');
@@ -14,7 +13,7 @@ function CardsList(): JSX.Element {
   }
 
   const allOffers = useAppSelector((state) => state.offersList);
-const city = useAppSelector((state) => state.city);
+  const city = useAppSelector((state) => state.city);
   return (
     <div className="cities__places-list places__list tabs__content">
 

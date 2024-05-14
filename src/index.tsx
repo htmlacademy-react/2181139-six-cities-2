@@ -39,7 +39,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <ToastContainer />
+      <ToastContainer />
       <App
         numberOfRentalOffers={Settings.numberOfRentalOffers}
       />
