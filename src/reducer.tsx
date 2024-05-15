@@ -1,6 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changingCity, changingSortingPopular, changingSortingPriceHighToLow, changingSortingPriceLowToHigh, changingSortingTopRatedFirst, changingHoveredCard, loadingCards, loadingReviews, setQuestionsDataLoadingStatus } from './action.tsx';
-import { OffersType ,OffersTypes, ReviewsTypes} from './types.tsx';
+import { changingCity, changingSortingPopular, changingSortingPriceHighToLow, changingSortingPriceLowToHigh, changingSortingTopRatedFirst, changingHoveredCard, loadingCards, loadingReviews, setDataLoadingStatus, requireAuthorization} from './action.tsx';
+import { OffersTypes, ReviewsTypes, AuthorizationStatusType} from './types.tsx';
+import { AuthorizationStatus } from './const.tsx';
+import { setAuthData } from './action.tsx';
 
 type stateType = {
   city: string;
@@ -8,7 +10,9 @@ type stateType = {
   sorting: string;
   hoveredCard: string;
   reviews: ReviewsTypes;
-  isQuestionsDataLoading: boolean;
+  isOffersDataLoading: boolean;
+  authorizationStatus: AuthorizationStatus;
+  authorizationData: AuthorizationStatusType;
 }
 
 const initialState : stateType = {
@@ -17,14 +21,22 @@ const initialState : stateType = {
   sorting: 'Popular',
   hoveredCard: '0',
   reviews: [],
-  isQuestionsDataLoading: false,
+  isOffersDataLoading: false,
+  authorizationStatus: AuthorizationStatus.NoAuth,
+  authorizationData: {
+    name: '',
+    avatarUrl: '',
+    isPro: false,
+    email: '',
+    token: ''
+  },
 };
+
 
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changingCity, (state, action) => {
       state.city = action.payload;
-      state.offersList = state.offersList.filter((off: OffersType) => off.city.name === state.city);
     })
     .addCase(changingSortingPopular, (state, action) => {
       state.sorting = action.payload;
@@ -51,8 +63,14 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(loadingReviews, (state, action) => {
       state.reviews = action.payload;
     })
-    .addCase(setQuestionsDataLoadingStatus, (state, action) => {
-      state.isQuestionsDataLoading = action.payload;
+    .addCase(setDataLoadingStatus, (state, action) => {
+      state.isOffersDataLoading = action.payload;
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
+    })
+    .addCase(setAuthData, (state, action) => {
+      state.authorizationData = action.payload;
     });
 });
 

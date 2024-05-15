@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 import { fetchReviewsAction } from '../../async-actions';
 import { useAppDispatch } from '../../hooks';
 
-
 type OffersPropsTypes = {
   offersNearby: OffersTypes;
 }
