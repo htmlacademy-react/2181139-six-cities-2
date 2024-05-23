@@ -19,9 +19,9 @@ function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {oneOffer.images.map((im, index) => (
-                <div className="offer__image-wrapper" key={index}>
-                  <img className="offer__image" key={index} src={im} alt="Photo studio" />
+              {oneOffer.images.map((im) => (
+                <div className="offer__image-wrapper" key={oneOffer.id}>
+                  <img className="offer__image" key={oneOffer.id} src={im} alt="Photo studio" />
                 </div>
               ))}
             </div>
@@ -50,13 +50,13 @@ function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element
                 <span className="offer__rating-value rating__value">{oneOffer.rating}</span>
               </div>
               <ul className="offer__features">
-                <li className="offer__feature offer__feature--entire" key={oneOffer.id + 1}>
+                <li className="offer__feature offer__feature--entire" key={oneOffer.id}>
                   {oneOffer.type}
                 </li>
-                <li className="offer__feature offer__feature--bedrooms" key={oneOffer.id + 2}>
+                <li className="offer__feature offer__feature--bedrooms" key={oneOffer.id}>
                   {oneOffer.bedrooms} Bedrooms
                 </li>
-                <li className="offer__feature offer__feature--adults" key={oneOffer.id + 3}>
+                <li className="offer__feature offer__feature--adults" key={oneOffer.id}>
                   {oneOffer.maxAdults} adults
                 </li>
               </ul>
@@ -67,11 +67,8 @@ function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
-                  {oneOffer.goods.map((g , index) =>
-                    (<li className="offer__inside-item" key={index}>
-                      {g}
-                     </li>)
-                  )}
+                  {oneOffer.goods.map((g) =>
+                    (<li className="offer__inside-item" key={oneOffer.id}>{g}</li>))}
                 </ul>
               </div>
               <div className="offer__host">

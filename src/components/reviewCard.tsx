@@ -1,11 +1,11 @@
 import FormForReview from './form-for-review';
-import { ReviewTypeList } from '../types';
+import {ReviewsTypes } from '../types';
 import Review from './review';
 import { AuthorizationStatus } from '../const';
 import { useAppSelector } from '../hooks';
 
 type ReviewsPropType = {
-  reviews: ReviewTypeList;
+  reviews: ReviewsTypes;
 }
 
 export default function ReviewCard({ reviews }: ReviewsPropType): JSX.Element {
