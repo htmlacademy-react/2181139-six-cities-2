@@ -21,10 +21,7 @@ function Login(): JSX.Element {
 
   useEffect(() => {
     if (authStatus === AuthorizationStatus.Auth){
-
-
       navigate('/');
-
     }
   },[authStatus]);
 

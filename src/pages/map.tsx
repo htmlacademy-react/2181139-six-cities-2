@@ -46,6 +46,6 @@ export default function Map(): JSX.Element {
     }
   }, [map, propPoints, hoveredCard]);
 
-  return <div style={{ height: '700px' }} ref={mapRef}></div>;
+  return <div style={{ height: '600px' , margin: 40}} ref={mapRef}></div>;
 }
 

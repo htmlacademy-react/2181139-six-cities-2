@@ -65,7 +65,7 @@ export type OfferCardType =
     maxAdults: number;
   }
 
-export type ReviewsType = {
+export type ReviewType = {
   id: string;
   date: string;
   user: {
@@ -78,7 +78,7 @@ export type ReviewsType = {
 
 };
 
-export type ReviewsTypes = ReviewsType[];
+export type ReviewsTypes = ReviewType[];
 
 export type AuthorizationStatusType = {
   name: string;
@@ -92,3 +92,8 @@ export type AuthDataType = {
     login: string;
     password: string;
   };
+
+export type ReviewFormType = {
+    rating: number;
+    comment: string;
+  }

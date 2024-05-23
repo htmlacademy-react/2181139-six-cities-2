@@ -685,7 +685,7 @@ img {
 (min-resolution:1.5dppx) {
   .cities__map {
     background-image: url(../img/map@2x.jpg);
-    background-size: 682px 794px
+    background-size: 68px 79px
   }
 }
 
@@ -1480,7 +1480,7 @@ img {
   margin-bottom: 50px;
   background-image: url(../img/map-big.jpg);
   background-repeat: no-repeat;
-  background-size: 1144px auto;
+  background-size: 1000px auto;
   background-position: center top
 }
 
@@ -1489,7 +1489,7 @@ img {
 (min-resolution:1.5dppx) {
   .offer__map {
     background-image: url(../img/map-big@2x.jpg);
-    background-size: 1144px auto
+    background-size: 1000px auto
   }
 }
 
