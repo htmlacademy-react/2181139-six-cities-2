@@ -10,7 +10,7 @@ export default function OfferNearby({ offer }: OfferNearbyProps): JSX.Element {
     <article className="near-places__card place-card">
       <div className="near-places__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={''} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">

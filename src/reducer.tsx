@@ -1,10 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { changingCity, changingSortingPopular, changingSortingPriceHighToLow, changingSortingPriceLowToHigh, changingSortingTopRatedFirst, changingHoveredCard, loadingCards, loadingReviews, setDataLoadingStatus, requireAuthorization} from './action.tsx';
-import { OffersTypes, ReviewsTypes, AuthorizationStatusType} from './types.tsx';
+import { changingCity, changingSortingPopular, changingSortingPriceHighToLow, changingSortingPriceLowToHigh, changingSortingTopRatedFirst, changingHoveredCard, loadingCards, loadingReviews, setDataLoadingStatus, requireAuthorization, getOffer, getOffersNearby, setComment} from './action.tsx';
+import { OffersTypes, ReviewsTypes, AuthorizationStatusType, OfferCardType} from './types.tsx';
 import { AuthorizationStatus } from './const.tsx';
 import { setAuthData } from './action.tsx';
 
-type stateType = {
+type StateType = {
   city: string;
   offersList: OffersTypes ;
   sorting: string;
@@ -13,9 +13,11 @@ type stateType = {
   isOffersDataLoading: boolean;
   authorizationStatus: AuthorizationStatus;
   authorizationData: AuthorizationStatusType;
+  offer: OfferCardType;
+  offersNearby: OffersTypes;
 }
 
-const initialState : stateType = {
+const initialState : StateType = {
   city: 'Paris',
   offersList: [],
   sorting: 'Popular',
@@ -30,6 +32,39 @@ const initialState : stateType = {
     email: '',
     token: ''
   },
+  offer: {
+    id: '',
+    title: '',
+    type: '',
+    price: 0,
+    city: {
+      name: '',
+      location: {
+        latitude: 0,
+        longitude: 0,
+        zoom: 0,
+      },
+    },
+    location: {
+      latitude: 0,
+      longitude: 0,
+      zoom: 0,
+    },
+    isFavorite: false,
+    isPremium: false,
+    rating: 0,
+    description: '',
+    bedrooms: 0,
+    goods: [''],
+    host: {
+      name: '',
+      avatarUrl: '',
+      isPro: false,
+    },
+    images: [''],
+    maxAdults: 0,
+  },
+  offersNearby: []
 };
 
 
@@ -71,6 +106,15 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAuthData, (state, action) => {
       state.authorizationData = action.payload;
+    })
+    .addCase(getOffer, (state, action) => {
+      state.offer = action.payload;
+    })
+    .addCase(getOffersNearby, (state, action) => {
+      state.offersNearby = action.payload;
+    })
+    .addCase(setComment , (state, action) => {
+      state.reviews = [...state.reviews, action.payload];
     });
 });
 
