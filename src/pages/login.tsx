@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector} from '../hooks';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { loginAction } from '../async-actions';
-import { requireAuthorization } from '../action';
+// import { requireAuthorization } from '../action';
 import { AuthorizationStatus } from '../const';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { auth } from '../slice';
 
 function Login(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -17,13 +18,14 @@ function Login(): JSX.Element {
     }
   );
 
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useAppSelector((state) => state.auth.authorizationStatus);
+  const authData = useAppSelector((state) => state.auth.authorizationData);
 
   useEffect(() => {
     if (authStatus === AuthorizationStatus.Auth){
       navigate('/');
     }
-  },[authStatus]);
+  },[authStatus, authData]);
 
   const handleFieldChange = (evt: ChangeEvent<HTMLInputElement>) => {
     evt.preventDefault();
@@ -34,9 +36,9 @@ function Login(): JSX.Element {
 
   function submit(evt: FormEvent<HTMLFormElement>) {
     evt.preventDefault();
-    dispatch(loginAction(formData));
-    dispatch(requireAuthorization(AuthorizationStatus.Auth));
-
+    dispatch(loginAction({login: formData.login, password: formData.password}));
+    dispatch(auth.actions.requireAuthorization(AuthorizationStatus.Auth));
+    navigate('/');
   }
 
   return (
@@ -85,17 +87,4 @@ function Login(): JSX.Element {
 }
 
 export default Login;
-
-// export default function Search() {
-//   function search(formData) {
-//     const query = formData.get("query");
-//     alert(`You searched for '${query}'`);
-//   }
-//   return (
-//     <form action={search}>
-//       <input name="query" />
-//       <button type="submit">Search</button>
-//     </form>
-//   );
-// }
 

@@ -1,7 +1,7 @@
 import { OffersType } from '../types';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../hooks';
-import { changingHoveredCard } from '../action';
+import { sortingAndOffersList } from '../slice';
 
 type OneCardProps = {
   offer: OffersType;
@@ -21,7 +21,8 @@ function OneCard({ offer, onMouseEnter }: OneCardProps): JSX.Element {
   return (
     <div onMouseEnter={function sendingId() {
       handler();
-      dispatch(changingHoveredCard(`${id}`));
+      dispatch(sortingAndOffersList.actions.changingHoveredCard(`${id}`));
+
     }}
     >
       <article className="cities__card place-card">

@@ -3,9 +3,10 @@ import { useAppSelector } from '../../hooks';
 import { AuthorizationStatus } from '../../const';
 import AuthHeader from './auth-header';
 import NoAuthHeader from './no-auth-header';
+import React from 'react';
 
-export default function HeaderLogin(): JSX.Element {
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+function HeaderLogin(): JSX.Element {
+  const authStatus = useAppSelector((state) => state.auth.status);
 
   return (
     <div className="container">
@@ -22,3 +23,5 @@ export default function HeaderLogin(): JSX.Element {
     </div>
   );
 }
+
+export default React.memo(HeaderLogin);

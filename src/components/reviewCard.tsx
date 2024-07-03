@@ -9,7 +9,7 @@ type ReviewsPropType = {
 }
 
 export default function ReviewCard({ reviews }: ReviewsPropType): JSX.Element {
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useAppSelector((state) => state.auth.status);
 
   const allReviews = reviews;
   return (

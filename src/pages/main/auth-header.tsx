@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AuthorizationStatus } from '../../const';
-import { requireAuthorization } from '../../action';
+import { auth } from '../../slice';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AuthHeader(): JSX.Element {
 
   const dispatch = useAppDispatch();
-  const authData = useAppSelector((state) => state.authorizationData);
+  const authData = useAppSelector((state) => state.auth.data);
+  const authStatus = useAppSelector((state) => state.auth.status);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authStatus === AuthorizationStatus.Auth){
+      navigate('/');
+    }
+  },[authStatus, authData]);
   function handler() {
-    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    dispatch(auth.actions.requireAuthorization(AuthorizationStatus.NoAuth));
   }
 
   return (
