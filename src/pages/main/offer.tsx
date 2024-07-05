@@ -13,9 +13,9 @@ function Offer(): JSX.Element {
 
   useEffect(() => {
     if (id) {
-      // dispatch(fetchReviewsAction(id));
+      dispatch(fetchReviewsAction(id));
       dispatch(fetchOffer(`${id}`));
-      // dispatch(fetchOffersNearby(`${id}`));
+      dispatch(fetchOffersNearby(`${id}`));
     }
   }, [id, dispatch]);
 

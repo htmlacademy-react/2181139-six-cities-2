@@ -1,7 +1,5 @@
 import HeaderLogin from './header-login';
 import { OffersTypes } from '../../types';
-// import OneCard from '../../components/one-card';
-// import { offersData } from '../../mocks/offers-reviews';
 import FavCards from '../../components/fav-card';
 
 type FavoritesProps = {

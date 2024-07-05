@@ -1,5 +1,4 @@
 import { useAppDispatch, useAppSelector } from './hooks';
-// import { changingCity } from './action';
 import { sortingAndOffersList } from './slice';
 
 
@@ -9,7 +8,6 @@ export type CityPropType = {
 
 export default function CitiesList({ cities }: CityPropType): JSX.Element {
   const citiesList = cities;
-
   const dispatch = useAppDispatch();
   const cityFromState: string = useAppSelector((state) => state.sorting.city);
 
@@ -17,7 +15,6 @@ export default function CitiesList({ cities }: CityPropType): JSX.Element {
     <ul className="locations__list tabs__list">
       {citiesList.map((city) => (
         <div onClick={function selectCity() {
-          console.log('city');
           dispatch(sortingAndOffersList.actions.changingCity(city));
 
         }} key={city}

@@ -8,14 +8,16 @@ import NotFound from '../../pages/not-found';
 import PrivateRoute from '../private-route.tsx';
 import { useAppSelector } from '../../hooks.tsx';
 import { LoadingScreen } from '../../loading-screen.tsx';
+import { State } from '../../types.tsx';
+import { OffersTypes } from '../../types.tsx';
 
-type AppScreenProps = {
-  numberOfRentalOffers: number;
-}
+function App() :JSX.Element {
 
-function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
+  const offersData = useAppSelector((state: State): OffersTypes => {
+    console.log(state);
+    return state.sorting.offersList;
+  });
 
-  const offersData = useAppSelector((state) => state.offersList);
   const isQuestionsDataLoading = useAppSelector((state) => state.sorting.isOffersDataLoading);
 
   if(isQuestionsDataLoading){
@@ -28,7 +30,7 @@ function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<MainPage numberOfRentalOffers={numberOfRentalOffers} />}
+          element={<MainPage/>}
         />
         <Route
           path={AppRoute.Login}
@@ -44,7 +46,7 @@ function App ({numberOfRentalOffers} : AppScreenProps) :JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer offersNearby={offersData}/>}
+          element={<Offer/>}
         />
         <Route
           path="*"

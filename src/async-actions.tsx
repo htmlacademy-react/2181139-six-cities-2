@@ -56,11 +56,11 @@ export const checkAuthAction = createAsyncThunk<{ status: AuthorizationStatus.Au
 export const fetchReviewsAction = createAsyncThunk<ReviewsTypes, string, {
   dispatch: AppDispatch;
   state: State;
-  extra: { api: AxiosInstance };
+  extra: AxiosInstance;
 }>
 (
   'loadingReviews',
-  async (id: string, { extra: { api } }) => {
+  async (id: string, { extra: api }) => {
     try {
       const { data } = await api.get<ReviewsTypes>(`/six-cities/comments/${id}`);
       return data;
@@ -73,11 +73,11 @@ export const fetchReviewsAction = createAsyncThunk<ReviewsTypes, string, {
 export const fetchOffer = createAsyncThunk<OfferCardType, string, {
   dispatch: AppDispatch;
   state: State;
-  extra: { api: AxiosInstance };
+  extra: AxiosInstance;
 }>
 (
   'getOffer',
-  async (id: string, { extra: { api } }) => {
+  async (id: string, { extra: api }) => {
     try {
       const response = await api.get<OfferCardType>(`/six-cities/offers/${id}`);
       if (response.status === 404) {
@@ -111,11 +111,11 @@ export const loginAction = createAsyncThunk<void, AuthDataType, {
 export const fetchOffersNearby = createAsyncThunk<OffersTypes, string, {
   dispatch: AppDispatch;
   state: State;
-  extra: { api: AxiosInstance };
+  extra: AxiosInstance;
 }>
 (
   'getOffersNearby',
-  async (id: string, { extra: { api } }) => {
+  async (id: string, { extra: api }) => {
     try {
       const response = await api.get<OffersTypes>(`/six-cities/offers/${id}/nearby`);
 

@@ -45,9 +45,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ToastContainer />
-      <App
-        numberOfRentalOffers={Settings.numberOfRentalOffers}
-      />
+      <App/>
     </Provider>
   </React.StrictMode>
 );
