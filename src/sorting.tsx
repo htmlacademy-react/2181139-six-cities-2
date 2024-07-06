@@ -1,11 +1,14 @@
-import { useAppDispatch, useAppSelector } from './hooks';
+import { useAppDispatch } from './hooks';
 import { useState } from 'react';
 import { sortingAndOffersList } from './slice';
+import { NameSpace } from './const';
+import { useSelector } from 'react-redux';
+import { State } from './types';
 
 export default function Sorting(): JSX.Element {
 
   const dispatch = useAppDispatch();
-  const sortingFromState: string = useAppSelector((state) => state.sorting.sorting);
+  const sortingFromState: string = useSelector((state: State) => state[NameSpace.Sorting].sorting);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {

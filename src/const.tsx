@@ -12,12 +12,6 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
 }
 
-export enum NameSpace {
-  Data = 'DATA',
-  Sorting = 'SORTING',
-  User = 'USER',
-}
-
 export const offerWhenRejected: OfferCardType = {
   id: '',
   title: '',
@@ -51,3 +45,8 @@ export const offerWhenRejected: OfferCardType = {
   maxAdults: 0,
 };
 
+export enum NameSpace {
+  Auth = 'AUTH',
+  Sorting = 'SORTING',
+  Offer = 'OFFER',
+}

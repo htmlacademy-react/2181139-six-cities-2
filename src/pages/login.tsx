@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector} from '../hooks';
+import { useAppDispatch} from '../hooks';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { loginAction } from '../async-actions';
-// import { requireAuthorization } from '../action';
 import { AuthorizationStatus } from '../const';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../slice';
+import { NameSpace } from '../const';
+import { useSelector } from 'react-redux';
+import { State } from '../types';
 
 function Login(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -18,8 +20,8 @@ function Login(): JSX.Element {
     }
   );
 
-  const authStatus = useAppSelector((state) => state.auth.authorizationStatus);
-  const authData = useAppSelector((state) => state.auth.authorizationData);
+  const authStatus = useSelector((state: State) => state[NameSpace.Auth].status);
+  const authData = useSelector((state: State) => state[NameSpace.Auth].data);
 
   useEffect(() => {
     if (authStatus === AuthorizationStatus.Auth){

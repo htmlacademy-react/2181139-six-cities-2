@@ -2,22 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { Provider } from 'react-redux';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-// import { reducer } from './reducer';
+import { configureStore } from '@reduxjs/toolkit';
 import { createApi } from './api';
 import { fetchOffersAction, checkAuthAction } from './async-actions';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { auth , sortingAndOffersList, offer} from './slice';
+import { rootReducer } from './root-reducer';
+
 
 export const api = createApi();
 
-export const store = configureStore({
-  reducer: combineReducers({
-    auth: auth.reducer,
-    sorting: sortingAndOffersList.reducer,
-    offer: offer.reducer
-  }),
+const store = configureStore({
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
@@ -25,6 +21,10 @@ export const store = configureStore({
       },
     }),
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
+
+export default store;
 
 store.dispatch(fetchOffersAction());
 store.dispatch(checkAuthAction());

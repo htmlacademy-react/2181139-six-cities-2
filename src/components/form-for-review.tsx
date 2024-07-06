@@ -1,6 +1,9 @@
 import { ChangeEvent, useState , FormEvent} from 'react';
 import { postComment } from '../async-actions';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { useAppDispatch} from '../hooks';
+import { NameSpace } from '../const';
+import { useSelector } from 'react-redux';
+import { State } from '../types';
 
 export default function FormForReview(): JSX.Element {
   const [formData, setFormData] = useState(
@@ -11,7 +14,7 @@ export default function FormForReview(): JSX.Element {
   );
 
   const dispatch = useAppDispatch();
-  const id = useAppSelector((state) => state.offer.id);
+  const id = useSelector((state: State) => state[NameSpace.Offer].offer.id);
 
   const handleFieldChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     evt.preventDefault();

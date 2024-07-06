@@ -10,15 +10,14 @@ import { useAppSelector } from '../../hooks.tsx';
 import { LoadingScreen } from '../../loading-screen.tsx';
 import { State } from '../../types.tsx';
 import { OffersTypes } from '../../types.tsx';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { NameSpace } from '../../const';
 
 function App() :JSX.Element {
 
-  const offersData = useAppSelector((state: State): OffersTypes => {
-    console.log(state);
-    return state.sorting.offersList;
-  });
+  const offersData = useSelector((state: State): OffersTypes => state[NameSpace.Sorting].offersList);
 
-  const isQuestionsDataLoading = useAppSelector((state) => state.sorting.isOffersDataLoading);
+  const isQuestionsDataLoading = useAppSelector((state) => state[NameSpace.Sorting].isOffersDataLoading);
 
   if(isQuestionsDataLoading){
     return (

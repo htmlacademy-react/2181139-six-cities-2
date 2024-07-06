@@ -56,10 +56,10 @@ function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element
                 <li className="offer__feature offer__feature--entire" key={uniqueId1}>
                   {oneOffer.type}
                 </li>
-                <li className="offer__feature offer__feature--bedrooms" key={uniqueId1 + 1}>
+                <li className="offer__feature offer__feature--bedrooms" key={'4'}>
                   {oneOffer.bedrooms} Bedrooms
                 </li>
-                <li className="offer__feature offer__feature--adults" key={uniqueId1 + 2}>
+                <li className="offer__feature offer__feature--adults" key={'7'}>
                   {oneOffer.maxAdults} adults
                 </li>
               </ul>

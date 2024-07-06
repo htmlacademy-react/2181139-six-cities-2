@@ -1,8 +1,10 @@
 import OneCard from './one-card';
-import { useAppSelector } from '../hooks';
 import { OffersType } from '../types';
 import { useState, useCallback } from 'react';
 import React from 'react';
+import { NameSpace } from '../const';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { State } from '../types';
 
 function CardsList(): JSX.Element {
 
@@ -13,9 +15,9 @@ function CardsList(): JSX.Element {
 
   const handler = useCallback((id: string) => handlerCallback(id), [setActiveCard]);
 
-  const allOffers = useAppSelector((state) => state.sorting.offersList);
+  const allOffers = useSelector((state: State) => state[NameSpace.Sorting].offersList);
 
-  const city = useAppSelector((state) => state.sorting.city);
+  const city = useSelector((state: State) => state[NameSpace.Sorting].city);
   return (
     <div className="cities__places-list places__list tabs__content">
 

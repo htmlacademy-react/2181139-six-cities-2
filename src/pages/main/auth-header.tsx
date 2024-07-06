@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
 import { AuthorizationStatus } from '../../const';
 import { auth } from '../../slice';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { NameSpace } from '../../const';
+import { useSelector } from 'react-redux';
+import { State } from '../../types';
 
 export default function AuthHeader(): JSX.Element {
 
   const dispatch = useAppDispatch();
-  const authData = useAppSelector((state) => state.auth.data);
-  const authStatus = useAppSelector((state) => state.auth.status);
+  const authData = useSelector((state: State) => state[NameSpace.Auth].data);
+  const authStatus = useSelector((state: State) => state[NameSpace.Auth].status);
   const navigate = useNavigate();
 
   useEffect(() => {

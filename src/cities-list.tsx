@@ -1,5 +1,8 @@
-import { useAppDispatch, useAppSelector } from './hooks';
+import { useAppDispatch } from './hooks';
 import { sortingAndOffersList } from './slice';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { RootState } from '.';
+import { NameSpace } from './const';
 
 
 export type CityPropType = {
@@ -9,7 +12,7 @@ export type CityPropType = {
 export default function CitiesList({ cities }: CityPropType): JSX.Element {
   const citiesList = cities;
   const dispatch = useAppDispatch();
-  const cityFromState: string = useAppSelector((state) => state.sorting.city);
+  const cityFromState = useSelector((state : RootState) => state[NameSpace.Sorting].city);
 
   return (
     <ul className="locations__list tabs__list">

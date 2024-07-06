@@ -1,7 +1,8 @@
-import { store } from './index.tsx';
+import store from '.';
+import { rootReducer } from './root-reducer';
 import {AuthorizationStatus} from './const';
 
-export type State = ReturnType<typeof store.getState>;
+export type State = ReturnType<typeof rootReducer>;
 
 export type AppDispatch = typeof store.dispatch;
 
