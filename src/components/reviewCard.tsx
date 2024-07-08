@@ -2,14 +2,16 @@ import FormForReview from './form-for-review';
 import {ReviewsTypes } from '../types';
 import Review from './review';
 import { AuthorizationStatus } from '../const';
-import { useAppSelector } from '../hooks';
+import { NameSpace } from '../const';
+import { useSelector } from 'react-redux';
+import { State } from '../types';
 
 type ReviewsPropType = {
   reviews: ReviewsTypes;
 }
 
 export default function ReviewCard({ reviews }: ReviewsPropType): JSX.Element {
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useSelector((state: State) => state[NameSpace.Auth].status);
 
   const allReviews = reviews;
   return (

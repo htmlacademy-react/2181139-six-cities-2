@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../hooks';
 import { useEffect } from 'react';
-import { fetchReviewsAction, fetchOffer, fetchOffersNearby } from '../../async-actions';
 import { useAppDispatch } from '../../hooks';
 import NotFound from '../not-found';
 import OfferComp from './offer-comp';
+import { fetchOffer , fetchReviewsAction, fetchOffersNearby} from '../../async-actions';
+import { NameSpace } from '../../const';
+import { useSelector } from 'react-redux';
+import { State } from '../../types';
 
 function Offer(): JSX.Element {
 
@@ -17,15 +19,15 @@ function Offer(): JSX.Element {
       dispatch(fetchOffer(`${id}`));
       dispatch(fetchOffersNearby(`${id}`));
     }
-  }, [id]);
+  }, [id, dispatch]);
 
-  const allReviews = useAppSelector((state) => state.reviews);
-  const offer = useAppSelector((state) => state.offer);
-  const offersNearBy = useAppSelector((state) => state.offersNearby);
+  const allReviews = useSelector((state: State) => state[NameSpace.Offer].reviews);
+  const offerCard = useSelector((state: State) => state[NameSpace.Offer].offer);
+  const offersNearBy = useSelector((state: State) => state[NameSpace.Offer].offersNearby);
 
   return (
     <div>
-      { id !== '' ? (<OfferComp oneOffer = { offer } reviews = { allReviews } offersNear = { offersNearBy } />) : (<NotFound/>)};
+      { id !== '' ? (<OfferComp oneOffer = { offerCard} reviews = { allReviews } offersNear = { offersNearBy } />) : (<NotFound/>)};
     </div>
   );
 }

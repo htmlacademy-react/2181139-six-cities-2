@@ -1,8 +1,14 @@
-import { store } from './index.tsx';
+import store from '.';
+import { rootReducer } from './root-reducer';
+import {AuthorizationStatus} from './const';
 
-export type State = ReturnType<typeof store.getState>;
+export type State = ReturnType<typeof rootReducer>;
 
 export type AppDispatch = typeof store.dispatch;
+
+export type UserProcess = {
+  authorizationStatus: AuthorizationStatus;
+};
 
 export type OffersType = {
   id: string;
@@ -96,4 +102,23 @@ export type AuthDataType = {
 export type ReviewFormType = {
     rating: number;
     comment: string;
+  }
+
+export type AuthStateType = {
+    status: AuthorizationStatus;
+    data: AuthorizationStatusType;
+  }
+
+export type SortingAndOffersListStateType = {
+    city: string;
+    sorting: string;
+    offersList: OffersTypes;
+    hoveredCard: string;
+    isOffersDataLoading: boolean;
+  }
+
+export type OfferStateType = {
+    reviews: ReviewsTypes;
+    offer: OfferCardType;
+    offersNearby: OffersTypes;
   }

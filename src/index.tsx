@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { reducer } from './reducer';
 import { createApi } from './api';
 import { fetchOffersAction, checkAuthAction } from './async-actions';
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { rootReducer } from './root-reducer';
+
 
 export const api = createApi();
 
-export const store = configureStore({
-  reducer,
+const store = configureStore({
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
@@ -20,6 +21,10 @@ export const store = configureStore({
       },
     }),
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
+
+export default store;
 
 store.dispatch(fetchOffersAction());
 store.dispatch(checkAuthAction());
@@ -40,9 +45,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ToastContainer />
-      <App
-        numberOfRentalOffers={Settings.numberOfRentalOffers}
-      />
+      <App/>
     </Provider>
   </React.StrictMode>
 );

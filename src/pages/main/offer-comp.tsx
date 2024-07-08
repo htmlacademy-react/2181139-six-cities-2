@@ -3,6 +3,7 @@ import HeaderLogin from './header-login';
 import Map from '../map';
 import ReviewCard from '../../components/reviewCard';
 import OffersListNearby from '../../components/offer-card-list-nearby';
+import { v4 as uuidv4} from 'uuid';
 
 type OfferCopmType = {
   oneOffer: OfferCardType;
@@ -12,6 +13,8 @@ type OfferCopmType = {
 
 function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element {
 
+  const uniqueId1 = uuidv4();
+
   return (
     <div>
       <HeaderLogin />
@@ -20,8 +23,8 @@ function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
               {oneOffer.images.map((im) => (
-                <div className="offer__image-wrapper" key={oneOffer.id}>
-                  <img className="offer__image" key={oneOffer.id} src={im} alt="Photo studio" />
+                <div className="offer__image-wrapper" key={im}>
+                  <img className="offer__image" key={im} src={im} alt="Photo studio" />
                 </div>
               ))}
             </div>
@@ -50,13 +53,13 @@ function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element
                 <span className="offer__rating-value rating__value">{oneOffer.rating}</span>
               </div>
               <ul className="offer__features">
-                <li className="offer__feature offer__feature--entire" key={oneOffer.id}>
+                <li className="offer__feature offer__feature--entire" key={uniqueId1}>
                   {oneOffer.type}
                 </li>
-                <li className="offer__feature offer__feature--bedrooms" key={oneOffer.id}>
+                <li className="offer__feature offer__feature--bedrooms" key={'4'}>
                   {oneOffer.bedrooms} Bedrooms
                 </li>
-                <li className="offer__feature offer__feature--adults" key={oneOffer.id}>
+                <li className="offer__feature offer__feature--adults" key={'7'}>
                   {oneOffer.maxAdults} adults
                 </li>
               </ul>
@@ -68,7 +71,7 @@ function OfferComp({oneOffer, reviews, offersNear} : OfferCopmType): JSX.Element
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
                   {oneOffer.goods.map((g) =>
-                    (<li className="offer__inside-item" key={oneOffer.id}>{g}</li>))}
+                    (<li className="offer__inside-item" key={g}>{g}</li>))}
                 </ul>
               </div>
               <div className="offer__host">

@@ -6,11 +6,8 @@ import Sorting from '../sorting.tsx';
 
 const citiesAll = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
-type MainPageProps = {
-  numberOfRentalOffers: number;
-}
 
-function MainPage({ numberOfRentalOffers }: MainPageProps): JSX.Element {
+function MainPage(): JSX.Element {
 
   return (
 
@@ -30,7 +27,7 @@ function MainPage({ numberOfRentalOffers }: MainPageProps): JSX.Element {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{numberOfRentalOffers} places to stay in Amsterdam</b>
+                <b className="places__found"> places to stay in Amsterdam</b>
                 <Sorting/>
                 <div className="cities__places-list places__list tabs__content">
                   <CardsList />

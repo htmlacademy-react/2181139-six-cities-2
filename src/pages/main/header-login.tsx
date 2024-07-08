@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../hooks';
 import { AuthorizationStatus } from '../../const';
 import AuthHeader from './auth-header';
 import NoAuthHeader from './no-auth-header';
+import React from 'react';
+import { NameSpace } from '../../const';
+import { useSelector } from 'react-redux';
+import { State } from '../../types';
 
-export default function HeaderLogin(): JSX.Element {
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+function HeaderLogin(): JSX.Element {
+  const authStatus = useSelector((state: State) => state[NameSpace.Auth].status);
 
   return (
     <div className="container">
@@ -22,3 +25,5 @@ export default function HeaderLogin(): JSX.Element {
     </div>
   );
 }
+
+export default React.memo(HeaderLogin);

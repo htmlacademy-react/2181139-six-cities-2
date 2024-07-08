@@ -2,12 +2,12 @@ import { AppDispatch, State, AuthDataType, OfferCardType } from './types';
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { OffersTypes, ReviewsTypes, AuthorizationStatusType, ReviewFormType, ReviewType } from './types';
-import { loadingReviews, setDataLoadingStatus, requireAuthorization, setAuthData, getOffer, getOffersNearby, setComment } from './action';
-import { AuthorizationStatus } from './const';
+import { AuthorizationStatus, offerWhenRejected } from './const';
 import { saveToken } from './token';
+import { sortingAndOffersList, auth } from './slice';
 
 
-export const fetchOffersAction = createAsyncThunk<void, undefined, {
+export const fetchOffersAction = createAsyncThunk<OffersTypes, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -15,44 +15,79 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
 (
   'loadingCards',
   async (_arg, { dispatch, extra: api }) => {
-    dispatch(setDataLoadingStatus(true));
-    const { data } = await api.get<OffersTypes>('/six-cities/offers');
-    dispatch(setDataLoadingStatus(false));
-    dispatch({ type: 'loadingCards', payload: data });
+    try {
+      dispatch(sortingAndOffersList.actions.setDataLoadingStatus(true));
+      const resp = await api.get<OffersTypes>('/six-cities/offers');
+      dispatch(sortingAndOffersList.actions.setDataLoadingStatus(false));
+      return resp.data;
+    } catch {
+      dispatch(sortingAndOffersList.actions.setDataLoadingStatus(false));
+      return [];
+    }
   },
+
 );
 
-export const fetchReviewsAction = createAsyncThunk<void, string, {
+export const checkAuthAction = createAsyncThunk<{ status: AuthorizationStatus.Auth; data: AuthorizationStatusType } | AuthorizationStatus.NoAuth | undefined, undefined | AuthorizationStatus.NoAuth | AuthorizationStatus.Auth, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'requireAuthorization',
+
+  async (_arg, { extra: api }) => {
+    try {
+      const resp = await api.get<AuthorizationStatusType>('/six-cities/login');
+      if (resp.status === 200) {
+        return {
+          status: AuthorizationStatus.Auth,
+          data: resp.data
+        };
+      }
+
+    } catch {
+
+      return AuthorizationStatus.NoAuth;
+    }
+  },
+
+);
+
+export const fetchReviewsAction = createAsyncThunk<ReviewsTypes, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>
 (
   'loadingReviews',
-  async (id: string, { dispatch, extra: api }) => {
-    const { data } = await api.get<ReviewsTypes>(`/six-cities/comments/${id}`);
-    dispatch(loadingReviews(data));
+  async (id: string, { extra: api }) => {
+    try {
+      const { data } = await api.get<ReviewsTypes>(`/six-cities/comments/${id}`);
+      return data;
+    } catch {
+      return [];
+    }
   },
 );
 
-export const checkAuthAction = createAsyncThunk<void, undefined, {
+export const fetchOffer = createAsyncThunk<OfferCardType, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
-}>(
-  'requireAuthorization',
-  async (_arg, { dispatch, extra: api }) => {
+}>
+(
+  'getOffer',
+  async (id: string, { extra: api }) => {
     try {
-      const resp = await api.get<AuthorizationStatusType>('/six-cities/login');
-      if (resp.status === 200) {
-        dispatch(requireAuthorization(AuthorizationStatus.Auth));
-        dispatch(setAuthData(resp.data));
+      const response = await api.get<OfferCardType>(`/six-cities/offers/${id}`);
+      if (response.status === 404) {
+        return offerWhenRejected;
       }
-
+      return response.data;
     } catch {
-      dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+      return offerWhenRejected;
     }
-  },
+  }
 );
 
 export const loginAction = createAsyncThunk<void, AuthDataType, {
@@ -67,85 +102,43 @@ export const loginAction = createAsyncThunk<void, AuthDataType, {
       const token = response.data.token;
 
       saveToken(token);
-      dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      dispatch(auth.actions.requireAuthorization(AuthorizationStatus.Auth));
     } catch {
-      dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+      dispatch(auth.actions.requireAuthorization(AuthorizationStatus.NoAuth));
     }
   });
 
-export const fetchOffer = createAsyncThunk<void, string, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>
-(
-  'getOffer',
-  async (id: string, { dispatch, extra: api }) => {
-    const response = await api.get<OfferCardType>(`/six-cities/offers/${id}`);
-    if (response.status === 404) {
-      dispatch(getOffer({
-        id: '',
-        title: '',
-        type: '',
-        price: 0,
-        city: {
-          name: '',
-          location: {
-            latitude: 0,
-            longitude: 0,
-            zoom: 0,
-          },
-        },
-        location: {
-          latitude: 0,
-          longitude: 0,
-          zoom: 0,
-        },
-        isFavorite: false,
-        isPremium: false,
-        rating: 0,
-        description: '',
-        bedrooms: 0,
-        goods: [''],
-        host: {
-          name: '',
-          avatarUrl: '',
-          isPro: false,
-        },
-        images: [''],
-        maxAdults: 0,
-      }));
-    }
-    dispatch(getOffer(response.data));
-  },
-);
-
-export const fetchOffersNearby = createAsyncThunk<void, string, {
+export const fetchOffersNearby = createAsyncThunk<OffersTypes, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>
 (
   'getOffersNearby',
-  async (id: string, { dispatch, extra: api }) => {
-    const response = await api.get<OffersTypes>(`/six-cities/offers/${id}/nearby`);
+  async (id: string, { extra: api }) => {
+    try {
+      const response = await api.get<OffersTypes>(`/six-cities/offers/${id}/nearby`);
 
-    dispatch(getOffersNearby(response.data));
+      return response.data;
+    } catch {
+      return [];
+    }
   },
 );
 
-export type PostCommentParam = ReviewFormType & {id: string};
+export type PostCommentParam = ReviewFormType & { id: string };
 
-export const postComment = createAsyncThunk<void, PostCommentParam, {
+export const postComment = createAsyncThunk<ReviewType, PostCommentParam, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'postComment',
 
-  async ({id, rating, comment }, { dispatch, extra: api }) => {
-    const response = await api.post<ReviewFormType, AxiosResponse<ReviewType>>(`/six-cities/comments/${id}`, { rating, comment});
-    dispatch(setComment(response.data));
+  async ({ id, rating, comment }, { extra: api }) => {
+    const response = await api.post<ReviewFormType, AxiosResponse<ReviewType>>(`/six-cities/comments/${id}`, { rating, comment });
+    // dispatch(setComment(response.data));
+    return response.data;
 
   }
 );
